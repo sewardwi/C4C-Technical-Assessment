@@ -24,7 +24,7 @@
 
 </body>
 </html>
--->
+
 
 <!DOCTYPE html>
 <html>
@@ -143,8 +143,125 @@
             <input type="text" id="message" name="message" placeholder="Your message here:" maxlength="123" contenteditable="true">
             <button onclick="printInputWithTime()" type="button">Send</button>
         </p>
-        <!-- Element to display the output -->
+        
         <p id="outputContainer"></p>
+    </div>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .header {
+            background-color: antiquewhite;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .background {
+            background-color: antiquewhite;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .textarea {
+            display: block;
+            width: 20%;
+            overflow: hidden;
+            resize: both;
+            min-height: 40px;
+            line-height: 40px;
+        }
+
+        .textarea[contenteditable]:empty::before {
+            content: "Start here!";
+            color: gray;
+        }
+
+        #outputContainer {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .userInput{
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>
+        // Initialize socket once
+        const socket = io();
+
+        function printInputWithTime() {
+            var userInput = document.getElementById("message").value;
+            if (userInput.trim() !== "") {
+                var currentTime = new Date().toLocaleTimeString();
+                var output = "Anonymous entered: " + userInput + " at " + currentTime;
+                
+                var paragraph = document.createElement("p");
+                paragraph.className = "userInput";
+                paragraph.textContent = output;
+                
+                var outputContainer = document.getElementById("outputContainer");
+                outputContainer.insertBefore(paragraph, outputContainer.firstChild);
+
+                socket.emit('message', output); // Emit the message to the server
+            } else {
+                console.log("No input provided.");
+            }
+        }
+
+        // Load previous user inputs when the page loads
+        window.onload = function() {
+            var outputContainer = document.getElementById("outputContainer");
+            var userInputs = JSON.parse(localStorage.getItem("userInputs")) || [];
+
+            userInputs.forEach(function(input) {
+                var paragraph = document.createElement("p");
+                paragraph.className = "userInput";
+                paragraph.textContent = input;
+                outputContainer.appendChild(paragraph);
+            });
+        }
+
+        socket.on('connect', () => {
+            console.log('Connected to server');
+        });
+
+        // Receive messages from the server and display them
+        socket.on('newMessage', (data) => {
+            const messageBoard = document.getElementById('outputContainer');
+            const messageParagraph = document.createElement('p');
+            messageParagraph.textContent = data;
+            messageBoard.appendChild(messageParagraph);
+        });
+    </script>
+</head>
+
+<title>C4C Message Board</title>
+
+<body>
+    <div class="header">
+        <h1>C4C Message Board</h1>
+    </div>
+
+    <div class="background">
+        <p>Welcome to the C4C Message Board! Here you can post anything on the website anonymously. Have fun!</p>
+        <p>
+            <label for="messageHere">What would you like the world to know?</label>
+        </p>
+        <p>
+            <input type="text" id="message" name="message" placeholder="Your message here:" maxlength="123" contenteditable="true">
+            <button onclick="printInputWithTime()" type="button">Send</button>
+        </p>
+        <!-- Element to display the output -->
+        <div id="outputContainer"></div>
     </div>
 
 </body>
