@@ -1,7 +1,7 @@
 # C4C-Technical-Assessment
 This is for the C4C Application Technical Assessment Spring 2024.
 
-Here are the instructions for running the message board program: 
+**Here are the instructions for running the message board program: **
 
 1. First, go to https://nodejs.org/en and download the version of Node.js that is the best for your computer. This will help in running the server. 
 
