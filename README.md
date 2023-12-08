@@ -13,4 +13,4 @@ My name is William Seward, and this is for the C4C Application Technical Assessm
       - Open either the Terminal application on Linux/Mac or through the Windows PowerShell on Windows. If you are on Windows, make sure to click "Run as Administrator" to open the Windows PowerShell application so it can makes changes to your file system.
       - Navigate to the project directory using commands such as "cd" with the specified path to your directory.
 
-5. Fifth, initialize the npm and create the "package.json" files. Once you are in your project directory from the Terminal/PowerShell, run the following command from the Terminal/PowerShell: '''console npm init -y'''
+5. Fifth, initialize the npm and create the "package.json" files. Once you are in your project directory from the Terminal/PowerShell, run the following command from the Terminal/PowerShell: ```console npm init -y```
