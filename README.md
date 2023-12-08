@@ -1,6 +1,14 @@
 # C4C-Technical-Assessment
 My name is William Seward, and this is for the C4C Application Technical Assessment Spring 2024.
 
+**Overview:**
+
+Welcome to the C4C Message Board! This is a website that allows for people to post their thoughts to a non-judgemental, non-censored, fully anonymous, global message board! Multiple users can be on the message board and see others posting simultaneously, while interacting with other anonymous users! Type something in the message box at the top to get started!
+
+**Fulfilling the Requirements:**
+
+I believe that this project fulfills the requirements because it has a textbox that allows for the user to send non-empty messages that are at most 128 characters long, a tagging for "Anonymous" posting and a timestamp for when messages are posted, a list of messages on the board listed from most recent to least recent, and access to the webiste via a server on localhost allowing others to be on the same website at the same time. 
+
 **Here are the instructions for running the message board program:**
 
 1. First, go to https://nodejs.org/en and download the version of Node.js that is the best for your computer. This will help in running the server. 
