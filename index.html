@@ -1,156 +1,3 @@
-<!DOCTYPE html> <!--- notes that this is an html file -->
-
-<!---
-<html>
-<head>
-<style>
-.myDiv {
-  border: 5px outset red;
-  background-color: lightblue;
-  text-align: center;
-}
-</style>
-</head>
-<body>
-
-<div class="myDiv">
-  <h2>This is a heading in a div element</h2>
-  <p>This is some text in a div element.</p>
-</div>
-
-<div class="myDiv">
-    <h1>this is another div?</h1>
-</div>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .header {
-            background-color: antiquewhite;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .background {
-            background-color: antiquewhite;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .textarea {
-            display: block;
-            width: 20%;
-            overflow: hidden;
-            resize: both;
-            min-height: 40px;
-            line-height: 40px;
-        }
-
-        .textarea[contenteditable]:empty::before {
-            content: "Start here!";
-            color: gray;
-        }
-
-        #outputContainer {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .userInput{
-            margin-bottom: 5px;
-        }
-    </style>
-
-    <script>
-        function printInputWithTime() {
-            var userInput = document.getElementById("message").value;
-            if (userInput !== "") {
-                var currentTime = new Date().toLocaleTimeString();
-                var output = "Anonymous entered: " + userInput + " at " + currentTime;
-                
-                var paragraph = document.createElement("p");
-                paragraph.className = "userInput";
-                paragraph.textContent = output;
-                
-                var outputContainer = document.getElementById("outputContainer");
-                outputContainer.insertBefore(paragraph, outputContainer.firstChild);
-
-                var userInputs = JSON.parse(localStorage.getItem("userInputs")) || [];
-                userInputs.unshift(output);
-                localStorage.setItem("userInputs", JSON.stringify(userInputs));
-            } else {
-                console.log("No input provided.");
-            }
-        }
-
-        window.onload = function() {
-            var outputContainer = document.getElementById("outputContainer");
-            var userInputs = JSON.parse(localStorage.getItem("userInputs")) || [];
-
-            userInputs.forEach(function(input) {
-                var paragraph = document.createElement("p");
-                paragraph.className = "userInput";
-                paragraph.textContent = input;
-                outputContainer.appendChild(paragraph);
-            })
-        }
-    </script>
-
-    <script src="https://cdnj.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
-    <script>
-        const socket = io();
-
-        function sendMessage() {
-            const message = document.getElementById('message').value;
-            if (message.trim() !== '') {
-                socket.emit('message', message);
-                document.getElementById('message').value = '';
-            }
-        }
-
-        socket.on('newMessage', (data) => {
-            const messageBoard = document.getElementById('messageBoard');
-            const messageDiv = document.createElement('div');
-            message.Div.textContent = data;
-            messageBoard.appendChild(messageDiv);
-        });
-    </script>
-</head>
-
-<title>C4C Message Board</title>
-
-<body>
-
-    <div class="header">
-        <h1>C4C Message Board</h1>
-    </div>
-
-    <div class="background">
-        <p>
-            Welcome to the C4C Message Board! Here you can post anything on the website anonymously. Have fun!
-        </p>
-        <p>
-            <label for="messageHere">What would you like the world to know?</label>
-        </p>
-        <p>
-            <input type="text" id="message" name="message" placeholder="Your message here:" maxlength="123" contenteditable="true">
-            <button onclick="printInputWithTime()" type="button">Send</button>
-        </p>
-        
-        <p id="outputContainer"></p>
-    </div>
-
-</body>
-</html>
--->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,8 +55,8 @@
                 paragraph.className = "userInput";
                 paragraph.textContent = output;
                 
-                var outputContainer = document.getElementById("outputContainer");
-                outputContainer.insertBefore(paragraph, outputContainer.firstChild);
+                //var outputContainer = document.getElementById("outputContainer");
+                //outputContainer.insertBefore(paragraph, outputContainer.firstChild);
 
                 socket.emit('message', output); // Emit the message to the server
             } else {
@@ -226,7 +73,7 @@
                 var paragraph = document.createElement("p");
                 paragraph.className = "userInput";
                 paragraph.textContent = input;
-                outputContainer.appendChild(paragraph);
+                outputContainer.insertBefore(paragraph, outputContainer.firstChild);
             });
         }
 
@@ -239,7 +86,7 @@
             const messageBoard = document.getElementById('outputContainer');
             const messageParagraph = document.createElement('p');
             messageParagraph.textContent = data;
-            messageBoard.appendChild(messageParagraph);
+            messageBoard.insertBefore(messageParagraph, messageBoard.firstChild);
         });
     </script>
 </head>
