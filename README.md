@@ -28,7 +28,11 @@ Thank you for taking the time to consider me for a developer role at Code4Commun
 
 
 **Debugging/Errors:**
+If there are any errors in running the program, here are a few websites I found to be helpful:
 
-If there are any errors a few websites helped me in writing this:
-- 
+- Error: after copy-pasting the link into your browser you just see "Cannot GET/": https://stackoverflow.com/questions/21317981/cannot-get-nodejs-error
+- Error: cannot find module "Express": https://stackoverflow.com/questions/14949118/node-js-error-cannot-find-module-express
+
+**Design Process:**
+I also want talk a little bit about the design process/what I found particularly challenging and interesting. I come into this with very little experience in HTML/CSS/JS. The practice I do have is through the NER Software Team, but that was very little and largely just focused on completing the assigned tickets. Thus, this is the first time where I have had to make a project fully in HTML/CSS/JS from scratch, and I thoroughly enjoyed it. The hardest parts were getting started initially and learning the syntax and the way the languages flow and intertwine with one another, and figuring out how to make local server, as it was the first time I have done that. I definitely learned a lot from this experience and I definitely had some fun along the way!
 
